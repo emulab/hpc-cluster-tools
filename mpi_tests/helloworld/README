@@ -1,0 +1,19 @@
+- Compile the mpihelloworld program:
+
+# mpiCC mpihelloworld.c -o mpihelloworld 
+
+- Run the program (as root, not recommeded but possible):
+
+# mpirun -n 10 --hostfile myhosts --allow-run-as-root ./mpihelloworld
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 0 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 1 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 2 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 3 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 4 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 5 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 6 out of 10 processors
+Hello world from processor head.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 7 out of 10 processors
+Hello world from processor node1.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 8 out of 10 processors
+Hello world from processor node1.dmdu-qv6191.utahstud-pg0.utah.cloudlab.us, rank 9 out of 10 processors
+
+For myhosts file that has head and node1 listed in it (on separate lines), you should see output from both nodes.

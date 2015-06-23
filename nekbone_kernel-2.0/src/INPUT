@@ -1,0 +1,8 @@
+C     Elemental derivative operators
+      common /dxyz/ dxm1(lx1,lx1),  dxtm1(lx1,lx1)
+
+c     Gauss-Labotto points and weights
+      common /gauss/ zgm1(lx1), wxm1(lx1)
+
+c     SEMHAT arrays
+      real ah(lx1*lx1),ch(lx1*lx1),bh(2*lx1)

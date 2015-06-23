@@ -1,0 +1,12 @@
+- Compile the mpihelloworld program:
+
+# mpiCC mpihelloworld.c -o mpihelloworld 
+
+- PBS script is in: mpihelloworld.pbs 
+Use mpirun with "--allow-run-as-root" only if necessary - it is not generally recommended.
+
+- Submit to the queue (normally, under a non-root user):
+
+# sbatch mpihelloworld.pbs 
+
+- See more info about SLURM and its commands in slurm_commands.txt and slurm_vs_torque.txt

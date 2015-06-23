@@ -1,0 +1,9 @@
+***********************************************************
+*              Changes in 2.0                             *
+***********************************************************
+ -source files and test directory separated to individual 
+	directories.  
+
+ -entire code moved to be independent of nekbone, mini app
+***********************************************************
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#SBATCH --ntasks=2
+#SBATCH --ntasks-per-node=1
+
+#SBATCH --output=/scratch/logs/%j.out
+#SBATCH --error=/scratch/logs/%j.err
+
+#SBATCH --account=perf
+#SBATCH --time=00:00:05
+
+mpirun -np 2 ./mpi_latency

@@ -1,0 +1,7 @@
+gfortran -o nekkernel  obj/driver.o obj/mxm_wrapper.o obj/semhat.o obj/speclib.o obj/math.o obj/mxm_std.o  
+#############################################################
+#                  Compilation successful!                  #
+#############################################################
+   text	   data	    bss	    dec	    hex	filename
+ 228206	    748	1536401888	1536630842	5b97203a	nekkernel
+

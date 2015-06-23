@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#SBATCH --ntasks=8
+#SBATCH --cpus-per-task=1
+
+#SBATCH --output=/scratch/logs/%j.out
+#SBATCH --error=/scratch/logs/%j.err
+
+#SBATCH --account=perf
+#SBATCH --time=00:00:05
+
+mpirun -np 8 ./mpihelloworld

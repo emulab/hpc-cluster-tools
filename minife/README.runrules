@@ -1,0 +1,43 @@
+Description:
+FE is a Finite Element mini-application which implements a couple of 
+kernels representative of implicit finite-element applications.  
+It assembles a sparse linear-system from the steady-state conduction 
+equation on a brick-shaped problem domain of linear 8-node hex elements.
+It then solves the linear-system using a simple un-preconditioned 
+conjugate-gradient algorithm.
+
+Thus the kernels that it contains are:
+- computation of element-operators (diffusion matrix, source vector)
+- assembly (scattering element-operators into sparse matrix and vector)
+- sparse matrix-vector product (during CG solve)
+- vector operations (level-1 blas: axpy, dot, norm)
+
+This version of miniFE has support for OpenMP. However, it is not deemed 
+to be complete and/or optimal. Offerors will need to tune it to their 
+paritcular architecture.
+
+Compiling:
+$ tar xzf miniFE_ref_1.4b.tgz
+$ cd miniFE_ref_1.4b
+Edit makefile for your environment
+$ make
+
+Running:
+miniFE requires three input parameters which dictate the dimensionality 
+of the problem. The primary purpose of specifying dimensionality is to 
+set the memory footprint. Note that running miniFE with a fixed set of 
+dimensions using a varying number of MPI ranks is a strong scaling method. 
+I.e. the problem size is fixed with the dimension parameters. 
+
+There are scripts for running the small, large and extra large problems
+as defined in the Trinity/NERSC-8 run rules document. The scripts are
+called run-<problem size>.sh for the respective size problems. The
+small problem is sized to use approximately 96 GB of main memory, medium is
+sized for ~32 TB and the extra large problem is ~960 TB. The scripts are
+configured for running on NERSC's Hopper machine, the number of MPI ranks
+can be modified to suit the Offeror's target architecture.
+
+Reporting:
+Results are written to a YAML file. From the YAML files, report
+"Total CG Time" and "Total CG Mflops".
+

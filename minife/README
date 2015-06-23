@@ -1,0 +1,23 @@
+Source: https://www.nersc.gov/users/computational-systems/cori/nersc-8-procurement/trinity-nersc-8-rfp/nersc-8-trinity-benchmarks/minife/
+
+Download: wget https://www.nersc.gov/assets/Trinity--NERSC-8-RFP/Benchmarks/Feb22/MiniFE_ref_1.4b.tar
+
+How to Build 
+
+Compiling:
+$ tar xzf miniFE_ref_1.4b.tgz
+$ cd miniFE_ref_1.4b
+Edit makefile for your environment
+$ make 
+
+How to Run 
+
+miniFE requires three input parameters which dictate the dimensionality of the problem. The primary purpose of specifying dimensionality is to set the memory footprint. Note that running miniFE with a fixed set of dimensions using a varying number of MPI ranks is a strong scaling method, i.e., the problem size is fixed with the dimension parameters.
+
+Updates:
+- Update source/makefle to have:
+  CXX=mpiCC
+  CC=mpicc
+- cd source ; make
+- Makre sure it works: ./run_test
+- Run a small test: sbatch run.pbs

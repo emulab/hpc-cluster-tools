@@ -1,0 +1,18 @@
+Source: http://www.ceci-hpc.be/slurm_faq.html#Q05
+
+Q05 How do I create a parallel environment?
+
+Slurm ignores the concept of parallel environment as such. Slurm simply requires that the number of nodes, or number of cores be specified. But you can have the control on how the cores are allocated; on a single nodes, on several nodes, etc. using the --cpus-per-task and --ntasks-per-node options for instance.
+
+With those options, there are several ways to get the same allocation. For instance, the following : --nodes=4 --ntasks=4 --cpus-per-task=4 is equivalent in terms of resource allocation to --ntasks=16 --ntasks-per-node=4 but it will lead to environment variables being set, and understood, differently by srun and mpirun: in the first case 4 processes are launched while in the second one 16 processes are launched.
+
+Suppose you need 16 cores. Here are some use cases
+
+you use mpi and do not care about where those cores are distributed: --ntasks=16
+you want to launch 16 independent processes (no communication): --ntasks=16
+you want those cores to spread across distinct nodes: --ntasks=16 and --ntasks-per-node=1 or --ntasks=16 and --nodes=16
+you want those cores to spread across distinct nodes and no interference from other jobs:--ntasks=16 --nodes=16 --exclusive
+you want 16 processes to spread across 8 nodes to have two processes per node: --ntasks=16 --ntasks-per-node=2
+you want 16 processes to stay on the same node: --ntasks=16 --ntasks-per-node=16
+you want one process that can use 16 cores for multithreadingi: --ntasks=1 --cpus-per-task=16
+you want 4 processes that can use 4 cores each for multithreading:--ntasks=4 --cpus-per-task=4
